@@ -1,13 +1,15 @@
-/**
- * FILE KHAI BÁO NGUYÊN MẪU HÀM
+/*
+ * THƯ VIỆN KHAI BÁO CÁC MẪU HÀM 
  */
 
-#include "validation.cpp"
+#pragma once
+
+#include <bits/stdc++.h>
 
 bool isMSSV(string);
 bool isName(string);
 bool isEmail(string);
-bool isBirth(int, int, int);
+bool isBirth(int , int , int );
 bool isGender(string);
 bool isMajors(string);
 bool isMark(int, int, int);
