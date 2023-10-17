@@ -11,6 +11,10 @@ using namespace std;
 
 int main()
 {
+    DSSV dssv;
+    SV sv;
+    dssv.nhapThongTin(sv);
+    dssv.themSV(sv);
     
     return 0;
 }

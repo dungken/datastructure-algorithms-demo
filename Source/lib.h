@@ -1,7 +1,7 @@
 /*
  * THƯ VIỆN KHAI BÁO KIỂU DANH SÁCH SV VÀ CLASS SV
  */
-#pragma once 
+#pragma once
 
 #include <bits/stdc++.h>
 
@@ -57,6 +57,7 @@ public:
 
     /*THÊM THÔNG TIN SINH VIÊN*/
     Node *taoSV(SV);
+    void nhapThongTin(SV &);
     void themSV(SV);
     void themDanhSachSV(int);
 
