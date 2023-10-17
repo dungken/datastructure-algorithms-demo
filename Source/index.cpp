@@ -12,7 +12,7 @@ using namespace std;
 
 int  main()
 {
-    bool x = isBrith(25, 1 , 2019);
+    bool x = isBrith(15, 0 , 2019);
     if(x == true) cout << 1;
      else cout << 0;
 
