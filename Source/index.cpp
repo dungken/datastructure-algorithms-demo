@@ -13,6 +13,8 @@ using namespace std;
 int main()
 {
     DSSV dssv;
-    dssv.themDanhSachSV(2);
+    // dssv.themDanhSachSV(2);
+    // dssv.ghiFile();
+    dssv.docFile();
     return 0;
 }
