@@ -13,9 +13,6 @@ using namespace std;
 int main()
 {
     DSSV dssv;
-    SV sv;
-    dssv.nhapThongTin(sv);
-    dssv.themSV(sv);
-
+    dssv.themDanhSachSV(2);
     return 0;
 }

@@ -26,8 +26,7 @@ bool isName(string name)
         return false;
     for (char x : name)
     {
-        tolower(x);
-        if (!isalpha(x) || x != ' ')
+        if (!isalpha(x) && x != ' ')
             return false;
     }
     return true;
@@ -97,21 +96,23 @@ bool isBirth(int ngay, int thang, int nam)
 
 bool isGender(string gender)
 {
-    if (gender.length() != 2 || gender.length() != 3)
+    if (gender.length() != 2 && gender.length() != 3)
         return false;
     for (char x : gender)
     {
         if (!isalpha(x))
             return false;
     }
+    return true;
 }
 bool isMajors(string nganh)
 {
     for (char x : nganh)
     {
-        if (!isalpha(x))
+        if (!isalpha(x) && x != ' ')
             return false;
     }
+    return true;
 }
 
 bool isMark(float dsa, float oop, float trr)

@@ -2,7 +2,6 @@
  * THƯ VIỆN CÀI ĐẶT
  */
 #pragma once
-
 #include <bits/stdc++.h>
 #include "lib.h"
 #include "validation.h"
@@ -32,6 +31,7 @@ void DSSV::nhapThongTin(SV &sv)
         cout << "(?) Nhap MSSV: ";
         getline(cin, mssv);
     } while (!isMSSV(mssv));
+
     sv.MSSV = mssv;
     // Họ và Tên
     do
@@ -95,6 +95,17 @@ void DSSV::themSV(SV sv)
     {
         newStudent->next = dssv;
         dssv = newStudent;
+    }
+}
+
+void DSSV::themDanhSachSV(int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        cout << "Them sinh vien " << i << "\n";
+        SV sv;
+        this->nhapThongTin(sv);
+        this->themSV(sv);
     }
 }
 
