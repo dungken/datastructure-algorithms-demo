@@ -1,6 +1,6 @@
 /**
  * FILE CHÍNH XỬ LÝ CHƯƠNG TRÌNH
-*/
+ */
 
 #include <bits/stdc++.h>
 #include "setting.h"
@@ -9,12 +9,13 @@
 
 using namespace std;
 
-
-int  main()
+int main()
 {
-    bool x = isBrith(25, 1 , 2019);
-    if(x == true) cout << 1;
-     else cout << 0;
+    bool x = isBrith(25, 1, 2019);
+    if (x == true)
+        cout << 1;
+    else
+        cout << 0;
 
     return 0;
 }

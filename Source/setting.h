@@ -1,5 +1,5 @@
 /*
- * THƯ VIỆN CÀI ĐẶT CÀI ĐẶT
+ * THƯ VIỆN CÀI ĐẶT
  */
 #pragma once
 
