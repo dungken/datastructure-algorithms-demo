@@ -6,6 +6,7 @@
 #include "setting.h"
 #include "lib.h"
 #include "validation.h"
+#include "implement_Validation.h"
 
 using namespace std;
 
@@ -15,6 +16,6 @@ int main()
     SV sv;
     dssv.nhapThongTin(sv);
     dssv.themSV(sv);
-    
+
     return 0;
 }

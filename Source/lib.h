@@ -4,7 +4,6 @@
 #pragma once
 
 #include <bits/stdc++.h>
-
 using namespace std;
 
 int ID = 0;

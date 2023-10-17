@@ -32,6 +32,7 @@ bool isName(string name)
     }
     return true;
 }
+
 bool isKTDB(char c)
 {
     return !isalpha(c) && !isdigit(c);
