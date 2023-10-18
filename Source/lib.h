@@ -65,8 +65,14 @@ public:
     void inDanhSachSV();
 
     /*CẬP NHẬT THÔNG TIN SINH VIÊN*/
-    void capNhatSV(int id);
-    void capNhatSV(string mssv);
+    void capNhatSvTheoTen(Node *nodeFound);
+    void capNhatSvTheoEmail(Node *nodeFound);
+    void capNhatSvTheoNgaySinh(Node *nodeFound);
+    void capNhatSvTheoGioiTinh(Node *nodeFound);
+    void capNhatSvTheoNganh(Node *nodeFound);
+    void capNhatSvTheoDiem(Node *nodeFound);
+    void capNhatSVBangID();
+    void capNhatSVBangMSSV();
 
     /*XÓA SINH VIÊN*/
     void xoaSV(int id[]);
