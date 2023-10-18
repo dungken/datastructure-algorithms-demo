@@ -15,7 +15,7 @@ struct Ngay
 
 struct Diem
 {
-    float diemOOP, diemDSA, diemTRR;
+    float diemOOP, diemDSA, diemTRR, DTB;
 };
 
 struct SV
@@ -79,18 +79,16 @@ public:
     void xoaSV(string mssv);
 
     /*SẮP XẾP SINH VIÊN*/
-    // (ID: 1) (MSSV: 2) (TEN: 3) (DTB: 4)
+    // (ID: 1) (MSSV: 2) (DTB: 3)
     void sxSVTangDanID();
-    void sxSVTangDanMssv();
     void sxSVTangDanTen();
     void sxSVTangDanDTB();
-    void sxSVTangDan(int);
+    void sxSVTangDan();
 
     void sxSVGiamDanID();
-    void sxSVGiamDanMssv();
     void sxSVGiamDanTen();
     void sxSVGiamDanDTB();
-    void sxSVGiamDan(int);
+    void sxSVGiamDan();
 
     /*TÌM KIẾM SINH VIÊN*/
     void timKiemSV(int id);

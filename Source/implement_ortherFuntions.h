@@ -11,6 +11,12 @@ bool kiemTraTonTai(string mssv)
 {
 }
 
+void swapNodes(Node *node1, Node *node2)
+{
+    SV temp = node1->sv;
+    node1->sv = node2->sv;
+    node2->sv = temp;
+}
 
 Node *nodeCuoiCung(Node *dssv)
 {
@@ -19,36 +25,72 @@ Node *nodeCuoiCung(Node *dssv)
     return dssv;
 }
 
-Node *phanHoach(Node *l, Node *h)
+Node *phanHoach(Node *l, Node *h, string tieuChi)
 {
-    int pivot = h->sv.id;
-    Node *i = l->prev;
-    for (Node *j = l; j != h; j = j->next)
+    if (tieuChi == "ID")
     {
-        if (j->sv.id <= pivot)
+        int pivot = h->sv.id;
+        Node *i = l->prev;
+        for (Node *j = l; j != h; j = j->next)
         {
-            i = (i == NULL) ? l : i->next;
-            swap((i->sv.id), (j->sv.id));
+            if (j->sv.id <= pivot)
+            {
+                i = (i == NULL) ? l : i->next;
+                swapNodes(i, j);
+            }
         }
+        i = (i == NULL) ? l : i->next;
+        swapNodes(i, h);
+        return i;
     }
-    i = (i == NULL) ? l : i->next;
-    swap((i->sv.id), (h->sv.id));
-    return i;
-}
-void quickSort(Node *l, Node *h)
-{
-    if (h != NULL && l != h && l != h->next)
+    else if (tieuChi == "TEN")
     {
-        Node *p = phanHoach(l, h);
-        quickSort(l, p->prev);
-        quickSort(p->next, h);
+        string pivot = h->sv.hoVaTen;
+        Node *i = l->prev;
+        for (Node *j = l; j != h; j = j->next)
+        {
+            if (j->sv.hoVaTen <= pivot)
+            {
+                i = (i == NULL) ? l : i->next;
+                swapNodes(i, j);
+            }
+        }
+        i = (i == NULL) ? l : i->next;
+        swapNodes(i, h);
+        return i;
+    }
+    else if (tieuChi == "DTB")
+    {
+        float pivot = h->sv.diem.DTB;
+        Node *i = l->prev;
+        for (Node *j = l; j != h; j = j->next)
+        {
+            if (j->sv.diem.DTB <= pivot)
+            {
+                i = (i == NULL) ? l : i->next;
+                swapNodes(i, j);
+            }
+        }
+        i = (i == NULL) ? l : i->next;
+        swapNodes(i, h);
+        return i;
     }
 }
 
-void quickSort(Node *dssv)
+void quickSort(Node *l, Node *h, string tieuChi)
+{
+    if (h != NULL && l != h && l != h->next)
+    {
+        Node *p = phanHoach(l, h, tieuChi);
+        quickSort(l, p->prev, tieuChi);
+        quickSort(p->next, h, tieuChi);
+    }
+}
+
+void quickSort(Node *dssv, string tieuChi)
 {
     Node *h = nodeCuoiCung(dssv);
-    quickSort(dssv, h);
+    quickSort(dssv, h, tieuChi);
 }
 
 Node *layNodeTheoId(Node *dssv, int id)
