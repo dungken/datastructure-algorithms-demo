@@ -109,6 +109,26 @@ void DSSV::themDanhSachSV(int n)
     }
 }
 
+void DSSV::inDanhSachSV()
+{
+    cout << "ID\t MSSV\t      hoVaTen\t \temail\t \t\tngay/thang/nam sinh\t gioiTinh\t nganhHoc\t OOP     DSA     TRR\n"; 
+    Node* current = dssv;
+    while (current != NULL)
+    {
+        cout << current->sv.id << " \t" << current->sv.MSSV << " \t" << current->sv.hoVaTen << " \t" << current->sv.email << " \t";
+        cout << current->sv.ngaySinh.ngay << "/" << current->sv.ngaySinh.thang << "/" << current->sv.ngaySinh.nam << " \t" << current->sv.gioiTinh << " \t";
+        cout << current->sv.nganhHoc << " \t" << current->sv.diem.diemOOP << "     " << current->sv.diem.diemDSA << "     " << current->sv.diem.diemTRR << endl;
+        current = current ->next;
+    }   
+}
+
+void DSSV::inThongTinSV(SV s)
+{
+    cout << s.id << " \t" << s.MSSV << " \t" << s.hoVaTen << " \t" << s.email << " \t";
+        cout << s.ngaySinh.ngay << "/" << s.ngaySinh.thang << "/" << s.ngaySinh.nam << " \t" << s.gioiTinh << " \t";
+        cout << s.nganhHoc << " \t" << s.diem.diemOOP << "     " << s.diem.diemDSA << "     " << s.diem.diemTRR << endl;
+}
+
 /*
 6351071011
 Ha Van Dung
