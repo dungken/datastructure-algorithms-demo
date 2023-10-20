@@ -43,6 +43,7 @@ class DSSV
 {
 private:
     Node *dssv;
+    Node* tail;
 
 public:
     DSSV()
