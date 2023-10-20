@@ -93,11 +93,15 @@ void DSSV::themSV(SV sv)
 {
     Node *newStudent = taoSV(sv);
     if (dssv == NULL)
-        dssv = newStudent;
-    else
     {
-        newStudent->next = dssv;
         dssv = newStudent;
+        tail = newStudent;
+    }
+    else
+    { 
+        newStudent->prev = tail;
+        tail->next = newStudent;
+        tail = newStudent;
     }
 }
 
@@ -461,4 +465,14 @@ void DSSV::sxSVTangDan()
     default:
         break;
     }
+}
+
+void DSSV::sxSVGiamDanID(){
+    quickSortGiamTheoID(dssv, tail);
+}
+void DSSV::sxSVGiamDanDTB(){
+    quickSortGiamTheoDTB(dssv, tail);
+}
+void DSSV::sxSVGiamDanTen(){
+    quickSortGiamTheoTen(dssv, tail);
 }
