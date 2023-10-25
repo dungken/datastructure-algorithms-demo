@@ -476,3 +476,84 @@ void DSSV::sxSVGiamDanDTB(){
 void DSSV::sxSVGiamDanTen(){
     quickSortGiamTheoTen(dssv, tail);
 }
+
+int DSSV::soLuong(){
+    Node* current = dssv;
+    if(!dssv) return 0;
+    int res = 0;
+    while(current){
+        res ++;
+        current = current->next;
+    }
+    return res;
+}
+
+void DSSV::xoaSV(int* id, int n){
+    Node* current = dssv;
+	if (!current || n > soLuong()) {
+        cout << "Khong tim thay sinh vien co ID phu hop!"<< endl;
+        return;
+    }
+
+    cout << "Nhap danh sach ID ca xoa: ";
+    for(int i=0; i<n; i++){
+        cin >> id[i];
+    }
+    
+    for(int i = 0; i<n; i++){
+
+        while (current->sv.id != id[i]) {
+            current = current->next; // Đưa đến Node cần xóa
+        }
+
+    // Nếu tồn tại Node trước Node cần xóa
+        if (current->prev) {  
+            current->prev->next = current->next;
+        } else {
+            dssv = current->next;
+        }
+
+    // Nếu tồn tại Node sau Node cần xóa
+        if (current->next) { 
+            current->next->prev = current->prev;
+        }
+		else {
+			current->prev = tail;
+		}
+
+        delete current;
+    }
+}
+
+void DSSV::xoaSV(string mssv){
+    Node* current = dssv;
+	bool check = false;
+
+    while (current->sv.MSSV != mssv && current->next != nullptr) {
+        current = current->next; // Đưa đến Node cần xóa
+    }
+    if(current->sv.MSSV == mssv) check = true;
+
+    if (!current || !check) {
+        cout << "Khong tim thay sinh vien co MSSV phu hop!"<< endl;
+        return;
+    }
+
+    // Nếu tồn tại Node trước Node cần xóa
+    if (current->prev) {  
+        current->prev->next = current->next;
+    } else {
+        dssv = current->next;
+    }
+
+    // Nếu tồn tại Node sau Node cần xóa
+    if (current->next) { 
+        current->next->prev = current->prev;
+    }
+	else {
+		current->prev = tail;
+	}
+
+    delete current;
+}
+

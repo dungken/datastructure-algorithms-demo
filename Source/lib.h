@@ -49,6 +49,7 @@ public:
     DSSV()
     {
         dssv = NULL;
+        tail = NULL;
     }
     ~DSSV()
     {
@@ -76,7 +77,7 @@ public:
     void capNhatSVBangMSSV();
 
     /*XÓA SINH VIÊN*/
-    void xoaSV(int id[]);
+    void xoaSV(int id[], int n);
     void xoaSV(string mssv);
 
     /*SẮP XẾP SINH VIÊN*/
@@ -101,6 +102,9 @@ public:
     void thongKeNganh();
     void thongKeGioiTinh();
     void thongKe(int);
+
+    /*SỐ LƯỢNG SINH VIÊN TRONG DANH SÁCH*/
+    int soLuong();
 
     /*XỬ LÝ ĐỌC GHI FILE*/
     void docFile();
