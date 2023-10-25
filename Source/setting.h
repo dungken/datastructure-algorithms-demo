@@ -502,7 +502,7 @@ void DSSV::xoaSV(int* id, int n){
     
     for(int i = 0; i<n; i++){
 
-        while (current->sv.id != id[i]) {
+        while (current->sv.id != id[i] && current!=nullptr) {
             current = current->next; // Đưa đến Node cần xóa
         }
 
@@ -529,7 +529,7 @@ void DSSV::xoaSV(string mssv){
     Node* current = dssv;
 	bool check = false;
 
-    while (current->sv.MSSV != mssv && current->next != nullptr) {
+    while (current->sv.MSSV != mssv && current != nullptr) {
         current = current->next; // Đưa đến Node cần xóa
     }
     if(current->sv.MSSV == mssv) check = true;
@@ -557,3 +557,18 @@ void DSSV::xoaSV(string mssv){
     delete current;
 }
 
+// void DSSV::timKiemSV(int id){
+//     Node* current = dssv;
+//     bool check = false;
+//     while (current->sv.id != id && current!=nullptr) {
+//         current = current->next; // Đưa đến Node cần xóa
+//     }
+//     if(current->sv.id == id) check = true;
+//     if(!current || !check){
+//         cout << "Khong tim thay sinh vien co ID: " << id << endl;
+//         return;
+//     }
+//     else{
+//         inThongTinSV(current->sv);
+//     }
+// }

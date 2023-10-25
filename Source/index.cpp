@@ -22,10 +22,8 @@ int main()
     // int n; cin >> n;
     // int* ID = new int[n];
     // dssv.xoaSV(ID, n);
-    string mssv;
-    cout << "Nhap danh sach MSSV ca xoa: ";
-    cin >> mssv;
-    dssv.xoaSV(mssv);
-    dssv.inDanhSachSV();
+    // dssv.inDanhSachSV();
+    int id; cin >> id;
+    dssv.timKiemSV(id);
     return 0;
 }
