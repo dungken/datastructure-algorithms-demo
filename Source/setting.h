@@ -488,87 +488,102 @@ int DSSV::soLuong(){
     return res;
 }
 
+void DSSV::xoaNode(Node* sv){
+    // Nếu tồn tại Node trước Node cần xóa
+        if (sv->prev) {  
+            sv->prev->next = sv->next;
+        } else {
+            dssv = sv->next;
+        }
+
+    // Nếu tồn tại Node sau Node cần xóa
+        if (sv->next) { 
+            sv->next->prev = sv->prev;
+        }
+		else {
+			sv->prev = tail;
+		}
+
+        delete sv;
+}
 void DSSV::xoaSV(int* id, int n){
     Node* current = dssv;
-	if (!current || n > soLuong()) {
-        cout << "Khong tim thay sinh vien co ID phu hop!"<< endl;
-        return;
-    }
-
+	
     cout << "Nhap danh sach ID ca xoa: ";
     for(int i=0; i<n; i++){
         cin >> id[i];
     }
     
     for(int i = 0; i<n; i++){
-
-        while (current->sv.id != id[i] && current!=nullptr) {
-            current = current->next; // Đưa đến Node cần xóa
+        bool check = false;
+        while(current!=nullptr){
+            if(current->sv.id == id[i]){
+               check = true;
+               xoaNode(current);
+            }
+            current = current->next;
         }
-
-    // Nếu tồn tại Node trước Node cần xóa
-        if (current->prev) {  
-            current->prev->next = current->next;
-        } else {
-            dssv = current->next;
+        
+        if (!current || n > soLuong() || !check) {
+          cout << "Khong tim thay sinh vien co ID phu hop!"<< endl;
+          return;
         }
-
-    // Nếu tồn tại Node sau Node cần xóa
-        if (current->next) { 
-            current->next->prev = current->prev;
-        }
-		else {
-			current->prev = tail;
-		}
-
-        delete current;
     }
+    return;
 }
 
 void DSSV::xoaSV(string mssv){
     Node* current = dssv;
 	bool check = false;
 
-    while (current->sv.MSSV != mssv && current != nullptr) {
-        current = current->next; // Đưa đến Node cần xóa
+    while(current!=nullptr){
+        if(current->sv.MSSV == mssv){
+            check = true;
+            xoaNode(current);
+            return; // Vì MSSV là duy nhất nên sau khi xóa 1 MSSV thì hàm sẽ dừng
+        }
+        current = current->next;
     }
-    if(current->sv.MSSV == mssv) check = true;
 
     if (!current || !check) {
         cout << "Khong tim thay sinh vien co MSSV phu hop!"<< endl;
         return;
     }
+    return;
 
-    // Nếu tồn tại Node trước Node cần xóa
-    if (current->prev) {  
-        current->prev->next = current->next;
-    } else {
-        dssv = current->next;
-    }
-
-    // Nếu tồn tại Node sau Node cần xóa
-    if (current->next) { 
-        current->next->prev = current->prev;
-    }
-	else {
-		current->prev = tail;
-	}
-
-    delete current;
 }
 
-// void DSSV::timKiemSV(int id){
-//     Node* current = dssv;
-//     bool check = false;
-//     while (current->sv.id != id && current!=nullptr) {
-//         current = current->next; // Đưa đến Node cần xóa
-//     }
-//     if(current->sv.id == id) check = true;
-//     if(!current || !check){
-//         cout << "Khong tim thay sinh vien co ID: " << id << endl;
-//         return;
-//     }
-//     else{
-//         inThongTinSV(current->sv);
-//     }
-// }
+void DSSV::timKiemSV(int id){
+    Node* current = dssv;
+    bool check = false;
+    while(current!=nullptr){
+        if(current->sv.id == id){
+            check = true;
+            break;
+        }
+        else current = current->next;
+    }
+    if(!current || !check){
+        cout << "Khong tim thay sinh vien co ID: " << id << endl;
+        return;
+    }
+    else{
+        inThongTinSV(current->sv);
+    }
+}
+
+void DSSV::timKiemSV(string ten){
+    Node* current = dssv;
+    bool check = false;
+    while(current!=nullptr){
+        if(tachChuoiInHoa(current->sv.hoVaTen) == tachChuoiInHoa(ten) || tachChuoiThuong(current->sv.hoVaTen) == tachChuoiThuong(ten)){
+            check = true;
+            inThongTinSV(current->sv);
+        }
+        current = current->next;
+    }
+    if(!check){
+        cout << "Khong tim thay sinh vien co ten: " << ten << endl;
+        return;
+    }
+}

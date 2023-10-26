@@ -23,7 +23,9 @@ int main()
     // int* ID = new int[n];
     // dssv.xoaSV(ID, n);
     // dssv.inDanhSachSV();
-    int id; cin >> id;
-    dssv.timKiemSV(id);
+    string ten;
+    getline(cin, ten); 
+    dssv.timKiemSV(ten);
+    
     return 0;
 }

@@ -30,3 +30,6 @@ void Swap(Node* l, Node* r);
 
 Node *layNodeTheoId(Node *dssv, int id);
 Node *layNodeTheoMSSV(Node *dssv, string mssv);
+
+string tachChuoiInHoa(const string& s);
+string tachChuoiThuong(const string& s);

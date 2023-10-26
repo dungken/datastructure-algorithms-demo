@@ -77,6 +77,7 @@ public:
     void capNhatSVBangMSSV();
 
     /*XÓA SINH VIÊN*/
+    void xoaNode(Node* sv);
     void xoaSV(int id[], int n);
     void xoaSV(string mssv);
 
