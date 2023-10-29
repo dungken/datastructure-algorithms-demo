@@ -587,3 +587,39 @@ void DSSV::timKiemSV(string ten){
         return;
     }
 }
+
+void DSSV::thongKeDTB(){
+    float diem; cin >> diem;
+    Node* current = dssv; int dem = 0;
+    while(current!=nullptr){
+        if(current->sv.diem.DTB == diem) dem ++;
+        current = current->next;
+    }
+    if(!dem) cout << "Khong tim thay sinh vien co DTB la: " << diem << endl;
+     else cout << "So sinh vien co DTB = " << diem << " la: " << dem << endl;
+}
+
+void DSSV::thongKeNganh(){
+    string s; getline(cin, s);
+    Node* current = dssv;int dem = 0;
+    while(current!=nullptr){
+        if(current->sv.nganhHoc == s) dem ++;
+        current = current->next;
+    }
+    if(!dem) cout << "Khong tim thay sinh vien nganh : " << s << endl;
+     else cout << "So sinh vien hoc nganh " << s << " la: " << dem << endl;
+}
+
+void DSSV::thongKeGioiTinh(){
+    string s; getline(cin, s);
+    Node* current = dssv;int dem = 0;
+    while(current!=nullptr){
+        if(current->sv.gioiTinh == s) dem ++;
+        current = current->next;
+    }
+    if(!dem) cout << "Khong tim thay sinh vien nganh : " << s << endl;
+     else cout << "Co " << dem << " " << s << endl;
+}
+
+// Chưa làm hàm void thongKe(int)
+
