@@ -93,6 +93,102 @@ void quickSort(Node *dssv, string tieuChi)
     quickSort(dssv, h, tieuChi);
 }
 
+void Swap(Node* l, Node* r){
+    swap(l->sv.id, r->sv.id);
+    swap(l->sv.MSSV, r->sv.MSSV);
+    swap(l->sv.hoVaTen, r->sv.hoVaTen);
+    swap(l->sv.email, r->sv.email);
+    swap(l->sv.ngaySinh.ngay, r->sv.ngaySinh.ngay);
+    swap(l->sv.ngaySinh.thang, r->sv.ngaySinh.thang);
+    swap(l->sv.ngaySinh.nam, r->sv.ngaySinh.nam);
+    swap(l->sv.gioiTinh, r->sv.gioiTinh);
+    swap(l->sv.nganhHoc, r->sv.nganhHoc); 
+    swap(l->sv.diem.diemOOP, r->sv.diem.diemOOP);
+    swap(l->sv.diem.diemDSA, r->sv.diem.diemDSA);
+    swap(l->sv.diem.diemTRR, r->sv.diem.diemTRR);
+}
+
+Node* phanHoachGiamTheoID(Node *l, Node *h)
+{
+    int pivot = h->sv.id;
+    Node *i = l->prev;
+    for (Node *j = l; j != h; j = j->next)
+    {
+        if (j->sv.id >= pivot)
+        {
+            i = (i == NULL) ? l : i->next;
+            Swap(i, j);
+        }
+    }
+    i = (i == NULL) ? l : i->next;
+    Swap(i, h);
+    return i;
+}
+
+void quickSortGiamTheoID(Node *l, Node *h)
+{
+    if (h != NULL && l != h && l != h->next)
+    {
+        Node *p = phanHoachGiamTheoID(l, h);
+        quickSortGiamTheoID(l, p->prev);
+        quickSortGiamTheoID(p->next, h);
+    }
+}
+
+Node* phanHoachGiamTheoDTB(Node *l, Node *h)
+{
+    int pivot = h->sv.diem.DTB;
+    Node *i = l->prev;
+    for (Node *j = l; j != h; j = j->next)
+    {
+        if (j->sv.diem.DTB >= pivot)
+        {
+            i = (i == NULL) ? l : i->next;
+            Swap(i, j);
+        }
+    }
+    i = (i == NULL) ? l : i->next;
+    Swap(i, h);
+    return i;
+}
+
+void quickSortGiamTheoDTB(Node *l, Node *h)
+{
+    if (h != NULL && l != h && l != h->next)
+    {
+        Node *p = phanHoachGiamTheoDTB(l, h);
+        quickSortGiamTheoDTB(l, p->prev);
+        quickSortGiamTheoDTB(p->next, h);
+    }
+}
+
+Node* phanHoachGiamTheoTen(Node *l, Node *h)
+{
+    string pivot = h->sv.hoVaTen;
+    Node *i = l->prev;
+    for (Node *j = l; j != h; j = j->next)
+    {
+        if (j->sv.hoVaTen >= pivot)
+        {
+            i = (i == NULL) ? l : i->next;
+            Swap(i, j);
+        }
+    }
+    i = (i == NULL) ? l : i->next;
+    Swap(i, h);
+    return i;
+}
+
+void quickSortGiamTheoTen(Node *l, Node *h)
+{
+    if (h != NULL && l != h && l != h->next)
+    {
+        Node *p = phanHoachGiamTheoTen(l, h);
+        quickSortGiamTheoTen(l, p->prev);
+        quickSortGiamTheoTen(p->next, h);
+    }
+}
+
 Node *layNodeTheoId(Node *dssv, int id)
 {
     Node *temp = dssv;
@@ -115,3 +211,37 @@ Node *layNodeTheoMSSV(Node *dssv, string mssv)
     }
     return NULL;
 }
+
+string tachChuoiInHoa(const string& text){
+    // TÃ¬m vá» trÃ­ cá»§a dáº¥u cÃ¡ch cuá»i cÃ¹ng trong chuá»i
+    size_t lastSpacePos = text.find_last_of(' ');
+
+    // Náº¿u khÃ´ng tÃ¬m tháº¥y dáº¥u cÃ¡ch, tráº£ vá» toÃ n bá» chuá»i
+    if (lastSpacePos == string::npos) {
+        return text;
+    }
+
+    // TrÃ­ch xuáº¥t tá»« cuá»i cÃ¹ng báº±ng cÃ¡ch sá»­ dá»¥ng substr
+    return text.substr(lastSpacePos + 1);
+}
+
+string tachChuoiThuong(const string& text) {
+    // Tìm vị trí dấu cách cuối cùng trong chuỗi
+    size_t lastSpacePos = text.find_last_of(' ');
+
+    // Nếu không tìm thấy dấu cách, trả về toàn bộ chuỗi
+    if (lastSpacePos == string::npos) {
+        return text;
+    }
+
+    // Trích xuất từ cuối cùng
+    string lastWord = text.substr(lastSpacePos + 1);
+
+    // Biến chữ cái in hoa thành chữ thường
+    for (char& c : lastWord) {
+        c = tolower(c);
+    }
+
+    return lastWord;
+}
+

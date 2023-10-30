@@ -1,4 +1,5 @@
 1;6351071011;Ha Van Dung;brave2112love@gmail.com;21;12;2004;Nam;Cong Nghe Thong Tin;8;7.2;10;8.4;
 3;6351071016;Nguyen Minh Nhat;minhnhat123@gmail.com;2;9;2004;Nam;Khoa Hoc May Tinh;8;9;7.8;8.26;
-2;6351071012;Nguyen Nguyen Huy;nguyenhuy23@gmail.com;3;8;2004;Nu;Cong Nghe Phan Mem;10;9.7;8;9.23;
-4;6351071012;Nguyen Xuan Manh;xuanmanh23@gmail.com;3;8;2004;Nu;An Toan Thong Tin;10;8;7;8.33;
+2;6351071012;Nguyen Nguyen Huy;nguyenhuy23@gmail.com;3;8;2004;Nu;Cong Nghe Thong Tin;10;9.7;8;9.23;
+4;6351071013;Nguyen Xuan Manh;xuanmanh23@gmail.com;3;8;2004;Nu;An Toan Thong Tin;10;8;7;8.33;
+5;6351071009;Ho Van Dung;d1@gmail.com;5;6;2012;Nam;CNTT;8;9;8.3;9;

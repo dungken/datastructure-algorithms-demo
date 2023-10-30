@@ -15,9 +15,19 @@ using namespace std;
 int main()
 {
     DSSV dssv;
+   
     dssv.docFile();
     dssv.inDanhSachSV();
-    dssv.sxSVTangDan();
-    dssv.inDanhSachSV();
+    // cout << "Nhap so luong sinh vien can xoa: ";
+    // int n; cin >> n;
+    // int* ID = new int[n];
+    // dssv.xoaSV(ID, n);
+    // dssv.inDanhSachSV();
+    // string ten;
+    // getline(cin, ten); 
+    // dssv.timKiemSV(ten);
+    dssv.thongKeGioiTinh();
+    dssv.thongKeNganh();
+    
     return 0;
 }

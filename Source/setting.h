@@ -93,11 +93,15 @@ void DSSV::themSV(SV sv)
 {
     Node *newStudent = taoSV(sv);
     if (dssv == NULL)
-        dssv = newStudent;
-    else
     {
-        newStudent->next = dssv;
         dssv = newStudent;
+        tail = newStudent;
+    }
+    else
+    { 
+        newStudent->prev = tail;
+        tail->next = newStudent;
+        tail = newStudent;
     }
 }
 
@@ -461,3 +465,160 @@ void DSSV::sxSVTangDan()
         break;
     }
 }
+
+void DSSV::sxSVGiamDanID(){
+    quickSortGiamTheoID(dssv, tail);
+}
+void DSSV::sxSVGiamDanDTB(){
+    quickSortGiamTheoDTB(dssv, tail);
+}
+void DSSV::sxSVGiamDanTen(){
+    quickSortGiamTheoTen(dssv, tail);
+}
+
+int DSSV::soLuong(){
+    Node* current = dssv;
+    if(!dssv) return 0;
+    int res = 0;
+    while(current){
+        res ++;
+        current = current->next;
+    }
+    return res;
+}
+
+void DSSV::xoaNode(Node* sv){
+    // Nếu tồn tại Node trước Node cần xóa
+        if (sv->prev) {  
+            sv->prev->next = sv->next;
+        } else {
+            dssv = sv->next;
+        }
+
+    // Nếu tồn tại Node sau Node cần xóa
+        if (sv->next) { 
+            sv->next->prev = sv->prev;
+        }
+		else {
+			sv->prev = tail;
+		}
+
+        delete sv;
+}
+void DSSV::xoaSV(int* id, int n){
+    Node* current = dssv;
+	
+    cout << "Nhap danh sach ID ca xoa: ";
+    for(int i=0; i<n; i++){
+        cin >> id[i];
+    }
+    
+    for(int i = 0; i<n; i++){
+        bool check = false;
+        while(current!=nullptr){
+            if(current->sv.id == id[i]){
+               check = true;
+               xoaNode(current);
+            }
+            current = current->next;
+        }
+        
+        if (!current || n > soLuong() || !check) {
+          cout << "Khong tim thay sinh vien co ID phu hop!"<< endl;
+          return;
+        }
+    }
+    return;
+}
+
+void DSSV::xoaSV(string mssv){
+    Node* current = dssv;
+	bool check = false;
+
+    while(current!=nullptr){
+        if(current->sv.MSSV == mssv){
+            check = true;
+            xoaNode(current);
+            return; // Vì MSSV là duy nhất nên sau khi xóa 1 MSSV thì hàm sẽ dừng
+        }
+        current = current->next;
+    }
+
+    if (!current || !check) {
+        cout << "Khong tim thay sinh vien co MSSV phu hop!"<< endl;
+        return;
+    }
+    return;
+
+}
+
+void DSSV::timKiemSV(int id){
+    Node* current = dssv;
+    bool check = false;
+    while(current!=nullptr){
+        if(current->sv.id == id){
+            check = true;
+            break;
+        }
+        else current = current->next;
+    }
+    if(!current || !check){
+        cout << "Khong tim thay sinh vien co ID: " << id << endl;
+        return;
+    }
+    else{
+        inThongTinSV(current->sv);
+    }
+}
+
+void DSSV::timKiemSV(string ten){
+    Node* current = dssv;
+    bool check = false;
+    while(current!=nullptr){
+        if(tachChuoiInHoa(current->sv.hoVaTen) == tachChuoiInHoa(ten) || tachChuoiThuong(current->sv.hoVaTen) == tachChuoiThuong(ten)){
+            check = true;
+            inThongTinSV(current->sv);
+        }
+        current = current->next;
+    }
+    if(!check){
+        cout << "Khong tim thay sinh vien co ten: " << ten << endl;
+        return;
+    }
+}
+
+void DSSV::thongKeDTB(){
+    float diem; cin >> diem;
+    Node* current = dssv; int dem = 0;
+    while(current!=nullptr){
+        if(current->sv.diem.DTB == diem) dem ++;
+        current = current->next;
+    }
+    if(!dem) cout << "Khong tim thay sinh vien co DTB la: " << diem << endl;
+     else cout << "So sinh vien co DTB = " << diem << " la: " << dem << endl;
+}
+
+void DSSV::thongKeNganh(){
+    string s; getline(cin, s);
+    Node* current = dssv;int dem = 0;
+    while(current!=nullptr){
+        if(current->sv.nganhHoc == s) dem ++;
+        current = current->next;
+    }
+    if(!dem) cout << "Khong tim thay sinh vien nganh : " << s << endl;
+     else cout << "So sinh vien hoc nganh " << s << " la: " << dem << endl;
+}
+
+void DSSV::thongKeGioiTinh(){
+    string s; getline(cin, s);
+    Node* current = dssv;int dem = 0;
+    while(current!=nullptr){
+        if(current->sv.gioiTinh == s) dem ++;
+        current = current->next;
+    }
+    if(!dem) cout << "Khong tim thay sinh vien nganh : " << s << endl;
+     else cout << "Co " << dem << " " << s << endl;
+}
+
+// Chưa làm hàm void thongKe(int)
+
