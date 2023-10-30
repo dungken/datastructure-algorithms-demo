@@ -183,12 +183,11 @@ void DSSV::ghiFile()
     while (tem != NULL)
     {
         xuatDuLieu << tem->sv.id << ";" << tem->sv.MSSV << ";"
-                   << tem->sv.hoVaTen << ";" << tem->sv.email << ";"
-                   << tem->sv.ngaySinh.ngay << ";" << tem->sv.ngaySinh.thang << ";" << tem->sv.ngaySinh.nam
-                   << ";" << tem->sv.gioiTinh << ";" << tem->sv.nganhHoc
-                   << ";" << tem->sv.diem.diemDSA << ";" << tem->sv.diem.diemOOP << ";" << tem->sv.diem.diemTRR << ";"
-                   << fixed << setprecision(2) << tem->sv.diem.DTB << ";"
-                   << "\n";
+        << tem->sv.hoVaTen << ";" << tem->sv.email << ";"
+        << tem->sv.ngaySinh.ngay << ";" << tem->sv.ngaySinh.thang << ";" << tem->sv.ngaySinh.nam
+        << ";" << tem->sv.gioiTinh << ";" << tem->sv.nganhHoc
+        << ";" << tem->sv.diem.diemDSA << ";" << tem->sv.diem.diemOOP << ";" << tem->sv.diem.diemTRR << ";"
+        << fixed << setprecision(2) << tem->sv.diem.DTB << ";" << "\n";
         tem = tem->next;
     }
     xuatDuLieu.close();
