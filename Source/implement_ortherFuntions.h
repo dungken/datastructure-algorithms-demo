@@ -141,7 +141,7 @@ Node* phanHoachGiamTheoDTB(Node *l, Node *h)
     Node *i = l->prev;
     for (Node *j = l; j != h; j = j->next)
     {
-        if (j->sv.diem.DTB >= pivot)
+        if (j->sv.diem.DTB <= pivot)
         {
             i = (i == NULL) ? l : i->next;
             Swap(i, j);

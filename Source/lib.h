@@ -8,18 +8,15 @@ using namespace std;
 
 int ID = 0;
 
-struct Ngay
-{
+struct Ngay {
     int ngay, thang, nam;
 };
 
-struct Diem
-{
+struct Diem {
     float diemOOP, diemDSA, diemTRR, DTB;
 };
 
-struct SV
-{
+struct SV {
     int id;          // ID sinh viên
     string MSSV;     // MSSV sinh viên
     string hoVaTen;  // Họ và Tên sinh viên
@@ -31,19 +28,17 @@ struct SV
 };
 
 // Node lưu thông tin sinh viên
-struct Node
-{
+struct Node {
     SV sv;
     Node *next;
     Node *prev;
 };
 
 // Danh sách sinh viên
-class DSSV
-{
+class DSSV {
 private:
     Node *dssv;
-    Node* tail;
+    Node *tail;
 
 public:
     DSSV()
@@ -77,7 +72,7 @@ public:
     void capNhatSVBangMSSV();
 
     /*XÓA SINH VIÊN*/
-    void xoaNode(Node* sv);
+    void xoaNode(Node *sv);
     void xoaSV(int id[], int n);
     void xoaSV(string mssv);
 
@@ -98,14 +93,12 @@ public:
     void timKiemSV(string ten);
 
     /*THỐNG KÊ SINH VIÊN*/
-    // (DTB: 1) (NGANH: 2) (GIOI TINH: 3)
+    // (DTB: 1) (NGANH: 2) (GIOI TINH: 3) (SO LUONG: 4)
     void thongKeDTB();
     void thongKeNganh();
     void thongKeGioiTinh();
-    void thongKe(int);
-
-    /*SỐ LƯỢNG SINH VIÊN TRONG DANH SÁCH*/
     int soLuong();
+    void thongKe();
 
     /*XỬ LÝ ĐỌC GHI FILE*/
     void docFile();

@@ -20,7 +20,7 @@ bool isMSSV(string mssv)
     return true;
 }
 
-bool isName(string name)
+bool isName(string name) 
 {
     if (name.length() < 5)
         return false;
@@ -115,7 +115,7 @@ bool isMajors(string nganh)
     return true;
 }
 
-bool isMark(float dsa, float oop, float trr)
+bool isMark(float dsa, float oop = 0, float trr = 0)
 {
     return (dsa >= 0 && dsa <= 10) && (oop >= 0 && oop <= 10) && (trr >= 0 && trr <= 10);
 }
