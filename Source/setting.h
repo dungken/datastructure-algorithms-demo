@@ -572,7 +572,6 @@ void DSSV::xoaSV(string mssv){
         cout << "\tDa xoa thanh cong!"<< endl;
 }
 
-
 void DSSV::timKiemSV(int id){
     Node* current = dssv;
     bool check = false;
@@ -609,6 +608,11 @@ void DSSV::timKiemSV(string ten){
 }
 
 void DSSV::thongKeDTB(){
+    cout << "\t[1]. Chinh xac muc diem\n";
+    cout << "\t[2]. Cao hon muc diem\n";
+    cout << "\t[3]. Thap hon muc diem\n";
+    cout << "\t(?): ";
+    int n; cin>>n;
     float diem;
     do
     {
@@ -617,15 +621,31 @@ void DSSV::thongKeDTB(){
     } while (!isMark(diem, 0, 0));
 
     Node* current = dssv; int dem = 0;
-    while(current!=nullptr){
-        if(current->sv.diem.DTB == diem) dem ++;
-        current = current->next;
-    }
-    if(!dem) cout << "\tKhong tim thay sinh vien co DTB la: " << diem << endl;
-        else cout << "\tSo sinh vien co DTB = " << diem << " la: " << dem << endl;
-}
 
+    if(n==1){
+        while(current!=nullptr){
+            if(current->sv.diem.DTB == diem) dem ++;
+            current = current->next;
+        }
+        cout << "\tSo sinh vien co DTB = " << diem << " la: " << dem << endl;
+    }
+    else if(n==2){
+        while(current!=nullptr){
+            if(current->sv.diem.DTB >= diem) dem ++;
+            current = current->next;
+        }
+        cout << "\tSo sinh vien co DTB cao hon " << diem << " la: " << dem << endl;
+    }
+    else{
+        while(current!=nullptr){
+            if(current->sv.diem.DTB < diem) dem ++;
+            current = current->next;
+        } 
+        cout << "\tSo sinh vien co DTB thap hon " << diem << " la: " << dem << endl;
+    }
     
+    if(!dem) cout << "\tKhong tim thay sinh vien co DTB la: " << diem << endl;
+}
 void DSSV::thongKeNganh(){
     string s;
     do
@@ -642,7 +662,11 @@ void DSSV::thongKeNganh(){
         current = current->next;
     }
     if(!dem) cout << "\tKhong tim thay sinh vien nganh : " << s << endl;
-        else cout << "\tSo sinh vien hoc nganh " << s << " la: " << dem << endl;
+        else {
+            cout << "\t+--------------------------------+\n";  
+            cout << "\t|So sinh vien hoc nganh " << s << " la: " << dem << "|\n";
+            cout << "\t+--------------------------------+\n";
+        }
 }
 
 void DSSV::thongKeGioiTinh(){
@@ -662,7 +686,19 @@ void DSSV::thongKeGioiTinh(){
     }
 
     if(!dem) cout << "\tKhong tim thay sinh vien nganh : " << s << endl;
-        else cout << "\tCo " << dem << " " << s << endl;
+        else {
+            if(s == "Nam"){
+                cout << "\t+--------------------+\n";
+                cout << "\t| Co " << dem << " " << s << "          |\n" ;
+                cout << "\t+--------------------+\n";
+            }
+            else {
+                cout << "\t+--------------------+\n";
+                cout << "\t| Co " << dem << " " << s << "           |\n" ;
+                cout << "\t+--------------------+\n";
+            }
+
+        }
 }
 
 void DSSV::thongKe() {

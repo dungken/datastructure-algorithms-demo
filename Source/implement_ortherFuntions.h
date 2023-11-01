@@ -45,11 +45,11 @@ Node *phanHoach(Node *l, Node *h, string tieuChi)
     }
     else if (tieuChi == "TEN")
     {
-        string pivot = h->sv.hoVaTen;
+        string pivot = tachChuoiInHoa(h->sv.hoVaTen);
         Node *i = l->prev;
         for (Node *j = l; j != h; j = j->next)
         {
-            if (j->sv.hoVaTen <= pivot)
+            if (tachChuoiInHoa(j->sv.hoVaTen) <= pivot)
             {
                 i = (i == NULL) ? l : i->next;
                 swapNodes(i, j);
@@ -106,6 +106,7 @@ void Swap(Node* l, Node* r){
     swap(l->sv.diem.diemOOP, r->sv.diem.diemOOP);
     swap(l->sv.diem.diemDSA, r->sv.diem.diemDSA);
     swap(l->sv.diem.diemTRR, r->sv.diem.diemTRR);
+    swap(l->sv.diem.DTB, r->sv.diem.DTB);
 }
 
 Node* phanHoachGiamTheoID(Node *l, Node *h)
@@ -137,11 +138,11 @@ void quickSortGiamTheoID(Node *l, Node *h)
 
 Node* phanHoachGiamTheoDTB(Node *l, Node *h)
 {
-    int pivot = h->sv.diem.DTB;
+    float pivot = h->sv.diem.DTB;
     Node *i = l->prev;
     for (Node *j = l; j != h; j = j->next)
     {
-        if (j->sv.diem.DTB <= pivot)
+        if (j->sv.diem.DTB >= pivot)
         {
             i = (i == NULL) ? l : i->next;
             Swap(i, j);
@@ -163,12 +164,12 @@ void quickSortGiamTheoDTB(Node *l, Node *h)
 }
 
 Node* phanHoachGiamTheoTen(Node *l, Node *h)
-{
-    string pivot = h->sv.hoVaTen;
+{ 
+    string pivot = tachChuoiInHoa(h->sv.hoVaTen);;
     Node *i = l->prev;
     for (Node *j = l; j != h; j = j->next)
     {
-        if (j->sv.hoVaTen >= pivot)
+        if (tachChuoiInHoa(j->sv.hoVaTen) >= pivot)
         {
             i = (i == NULL) ? l : i->next;
             Swap(i, j);
@@ -245,3 +246,15 @@ string tachChuoiThuong(const string& text) {
     return lastWord;
 }
 
+std::string tachChuoiDauTien(const std::string& text) {
+    // Tìm vị trí của dấu cách đầu tiên trong chuỗi
+    size_t firstSpacePos = text.find(' ');
+
+    // Nếu không tìm thấy dấu cách, trả về toàn bộ chuỗi
+    if (firstSpacePos == std::string::npos) {
+        return text;
+    }
+
+    // Trích xuất từ đầu đến vị trí đầu tiên bằng cách sử dụng substr
+    return text.substr(0, firstSpacePos);
+}
