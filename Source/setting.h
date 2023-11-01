@@ -120,10 +120,9 @@ void DSSV::themDanhSachSV(int n)
 
 void DSSV::inDanhSachSV()
 {
-    cout << "ID\t MSSV\t      hoVaTen\t \temail\t \t\tngay/thang/nam sinh\t gioiTinh\t nganhHoc\t OOP     DSA     TRR    DTB\n";
+    cout << "\n|ID\t MSSV\t      Ho & Ten\t \tEmail\t \t\tNgay Sinh\t Gioi Tinh\t Nganh\t OOP     DSA     TRR    DTB|";
     Node *current = dssv;
-    while (current != NULL)
-    {
+    while (current != NULL) {
         cout << current->sv.id << " \t" << current->sv.MSSV << " \t" << current->sv.hoVaTen << " \t" << current->sv.email << " \t";
         cout << current->sv.ngaySinh.ngay << "/" << current->sv.ngaySinh.thang << "/" << current->sv.ngaySinh.nam << " \t" << current->sv.gioiTinh << " \t";
         cout << current->sv.nganhHoc << " \t" << current->sv.diem.diemOOP << "     " << current->sv.diem.diemDSA << "     " << current->sv.diem.diemTRR << "     " << current->sv.diem.DTB << endl;
@@ -245,6 +244,7 @@ void DSSV::capNhatSvTheoEmail(Node *nodeFound)
     }
     cout << "\tCap nhat email thanh cong!\n";
 }
+
 void DSSV::capNhatSvTheoNgaySinh(Node *nodeFound)
 {
     int ngay, thang, nam;
@@ -268,6 +268,7 @@ void DSSV::capNhatSvTheoNgaySinh(Node *nodeFound)
     }
     cout << "\tCap nhat ngay sinh thanh cong!\n";
 }
+
 void DSSV::capNhatSvTheoGioiTinh(Node *nodeFound)
 {
     cin.ignore();
@@ -291,6 +292,7 @@ void DSSV::capNhatSvTheoGioiTinh(Node *nodeFound)
     }
     cout << "\tCap nhat gioi tinh thanh cong!\n";
 }
+
 void DSSV::capNhatSvTheoNganh(Node *nodeFound)
 {
     cin.ignore();
@@ -454,17 +456,17 @@ void DSSV::sxSVTangDan()
     cin >> chon;
     switch (chon)
     {
-    case 1:
-        this->sxSVTangDanID();
-        break;
-    case 2:
-        this->sxSVTangDanTen();
-        break;
-    case 3:
-        this->sxSVTangDanDTB();
-        break;
-    default:
-        break;
+        case 1:
+            this->sxSVTangDanID();
+            break;
+        case 2:
+            this->sxSVTangDanTen();
+            break;
+        case 3:
+            this->sxSVTangDanDTB();
+            break;
+        default:
+            break;
     }
 }
 
