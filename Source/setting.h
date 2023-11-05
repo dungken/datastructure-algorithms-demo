@@ -6,6 +6,7 @@
 #include "lib.h"
 #include "validation.h"
 #include "ortherFunctions.h"
+#include "Graphic.h"
 
 using namespace std;
 
@@ -29,7 +30,7 @@ void DSSV::nhapThongTin(SV &sv)
     // MSSV
     do
     {
-        cout << "\t(?) Nhap MSSV: ";
+        cout << "\t\t(?) Nhap MSSV: ";
         getline(cin, mssv);
     } while (!isMSSV(mssv));
 
@@ -37,7 +38,7 @@ void DSSV::nhapThongTin(SV &sv)
     // Họ và Tên
     do
     {
-        cout << "\t(?) Nhap Ho & Ten: ";
+        cout << "\t\t(?) Nhap Ho & Ten: ";
         getline(cin, hoVaTen);
     } while (!isName(hoVaTen));
     chuanHoaChuoi(hoVaTen);
@@ -45,14 +46,14 @@ void DSSV::nhapThongTin(SV &sv)
     // Email
     do
     {
-        cout << "\t(?) Nhap email: ";
+        cout << "\t\t(?) Nhap email: ";
         getline(cin, email);
     } while (!isEmail(email));
     sv.email = email;
     // Ngày sinh
     do
     {
-        cout << "\t(?) Nhap ngay sinh: ";
+        cout << "\t\t(?) Nhap ngay sinh: ";
         cin >> ngay >> thang >> nam;
     } while (!isBirth(ngay, thang, nam));
     sv.ngaySinh.ngay = ngay;
@@ -62,7 +63,7 @@ void DSSV::nhapThongTin(SV &sv)
     // Giới tính
     do
     {
-        cout << "\t(?) Nhap gioi tinh: ";
+        cout << "\t\t(?) Nhap gioi tinh: ";
         getline(cin, gioiTinh);
     } while (!isGender(gioiTinh));
     chuanHoaChuoi(gioiTinh);
@@ -70,7 +71,7 @@ void DSSV::nhapThongTin(SV &sv)
     // Ngành học
     do
     {
-        cout << "\t(?) Nhap nganh hoc: ";
+        cout << "\t\t(?) Nhap nganh hoc: ";
         getline(cin, nganhHoc);
     } while (!isMajors(nganhHoc));
     chuanHoaChuoi(nganhHoc);
@@ -78,7 +79,7 @@ void DSSV::nhapThongTin(SV &sv)
     // Điểm
     do
     {
-        cout << "\t(?) Nhap diem 3 mon (DSA + OOP + TRR): ";
+        cout << "\t\t(?) Nhap diem 3 mon (DSA + OOP + TRR): ";
         cin >> diemDSA >> diemOOP >> diemTRR;
     } while (!isMark(diemDSA, diemOOP, diemTRR));
     sv.diem.diemDSA = diemDSA;
@@ -109,24 +110,31 @@ void DSSV::themDanhSachSV(int n)
 {
     for (int i = 1; i <= n; i++)
     {
-        cout << "\t*Them sinh vien " << i << endl;
+        cout << "\t\t*Them sinh vien " << i << endl;
         SV sv;
         this->nhapThongTin(sv);
         this->themSV(sv);
-        this->inThongTinSV(sv);
         cout << endl;
     }
 }
 
 void DSSV::inDanhSachSV()
 {
-    cout << "ID\t MSSV\t      hoVaTen\t \temail\t \t\tngay/thang/nam sinh\t gioiTinh\t nganhHoc\t OOP     DSA     TRR    DTB\n";
-    Node *current = dssv;
-    while (current != NULL)
-    {
-        cout << current->sv.id << " \t" << current->sv.MSSV << " \t" << current->sv.hoVaTen << " \t" << current->sv.email << " \t";
-        cout << current->sv.ngaySinh.ngay << "/" << current->sv.ngaySinh.thang << "/" << current->sv.ngaySinh.nam << " \t" << current->sv.gioiTinh << " \t";
-        cout << current->sv.nganhHoc << " \t" << current->sv.diem.diemOOP << "     " << current->sv.diem.diemDSA << "     " << current->sv.diem.diemTRR << "     " << current->sv.diem.DTB << endl;
+    gotoxy(1,14); cout << "ID";
+    gotoxy(8,14); cout << "MSSV";
+    gotoxy(20,14); cout << "Ho va ten";
+    gotoxy(40,14); cout << "Gmail";
+    gotoxy(60,14); cout << "Ngay/Thang/Nam";
+    gotoxy(77,14); cout << "Gioi tinh";
+    gotoxy(91,14); cout << "Nganh hoc";
+    gotoxy(107,14); cout << "OOP";
+    gotoxy(114,14); cout << "DSA";
+    gotoxy(121, 14); cout <<  "TRR";
+    gotoxy(128, 14); cout << "DTB\n"; 
+    int dem = -4; 
+    Node* current = dssv;
+    while(current!=nullptr){
+        List(current->sv, dem++);
         current = current->next;
     }
 }
@@ -205,7 +213,7 @@ void DSSV::capNhatSvTheoTen(Node *nodeFound)
     string hoVaTen;
     do
     {
-        cout << "\t(?) Nhap Ho & Ten: ";
+        cout << "\t\t(?) Nhap Ho & Ten: ";
         getline(cin, hoVaTen);
     } while (!isName(hoVaTen));
     chuanHoaChuoi(hoVaTen);
@@ -220,7 +228,10 @@ void DSSV::capNhatSvTheoTen(Node *nodeFound)
         }
         temp = temp->next;
     }
-    cout << "\tCap nhat ten thanh cong!\n";
+    cout << "\t\t+------------------------------+\n";
+    cout << "\t\t|Cap nhat ten thanh cong!\n";
+    gotoxy(47,29); cout <<"|\n";
+    gotoxy(0,30); cout << "\t\t+------------------------------+\n";
 }
 
 void DSSV::capNhatSvTheoEmail(Node *nodeFound)
@@ -229,7 +240,7 @@ void DSSV::capNhatSvTheoEmail(Node *nodeFound)
     string email;
     do
     {
-        cout << "\t(?) Nhap email: ";
+        cout << "\t\t(?) Nhap email: ";
         getline(cin, email);
     } while (!isEmail(email));
     // Thuc hien cap nhat email
@@ -243,14 +254,17 @@ void DSSV::capNhatSvTheoEmail(Node *nodeFound)
         }
         temp = temp->next;
     }
-    cout << "\tCap nhat email thanh cong!\n";
+    cout << "\t\t+------------------------------+\n";
+    cout << "\t\t|Cap nhat email thanh cong!\n";
+    gotoxy(47,29); cout <<"|\n";
+    gotoxy(0,30); cout << "\t\t+------------------------------+\n";
 }
 void DSSV::capNhatSvTheoNgaySinh(Node *nodeFound)
 {
     int ngay, thang, nam;
     do
     {
-        cout << "\t(?) Nhap ngay sinh: ";
+        cout << "\t\t(?) Nhap ngay sinh: ";
         cin >> ngay >> thang >> nam;
     } while (!isBirth(ngay, thang, nam));
     // Thuc hien cap nhat ngay sinh
@@ -266,7 +280,10 @@ void DSSV::capNhatSvTheoNgaySinh(Node *nodeFound)
         }
         temp = temp->next;
     }
-    cout << "\tCap nhat ngay sinh thanh cong!\n";
+    cout << "\t\t+------------------------------+\n";
+    cout << "\t\t|Cap nhat ngay sinh thanh cong!\n";
+    gotoxy(47,29); cout <<"|\n";
+    gotoxy(0,30); cout << "\t\t+------------------------------+\n";
 }
 void DSSV::capNhatSvTheoGioiTinh(Node *nodeFound)
 {
@@ -274,7 +291,7 @@ void DSSV::capNhatSvTheoGioiTinh(Node *nodeFound)
     string gioiTinh;
     do
     {
-        cout << "\t(?) Nhap gioi tinh: ";
+        cout << "\t\t(?) Nhap gioi tinh: ";
         getline(cin, gioiTinh);
     } while (!isGender(gioiTinh));
     chuanHoaChuoi(gioiTinh);
@@ -289,7 +306,11 @@ void DSSV::capNhatSvTheoGioiTinh(Node *nodeFound)
         }
         temp = temp->next;
     }
-    cout << "\tCap nhat gioi tinh thanh cong!\n";
+    cout << "\t\t+------------------------------+\n";
+    cout << "\t\t|Cap nhat gioi tinh thanh cong!\n";
+    gotoxy(47,29); cout <<"|\n";
+    gotoxy(0,30); cout << "\t\t+------------------------------+\n";
+
 }
 void DSSV::capNhatSvTheoNganh(Node *nodeFound)
 {
@@ -297,7 +318,7 @@ void DSSV::capNhatSvTheoNganh(Node *nodeFound)
     string nganhHoc;
     do
     {
-        cout << "\t(?) Nhap nganh hoc: ";
+        cout << "\t\t(?) Nhap nganh hoc: ";
         getline(cin, nganhHoc);
     } while (!isMajors(nganhHoc));
     chuanHoaChuoi(nganhHoc);
@@ -312,14 +333,17 @@ void DSSV::capNhatSvTheoNganh(Node *nodeFound)
         }
         temp = temp->next;
     }
-    cout << "\tCap nhat nganh hoc thanh cong!\n";
+    cout << "\t\t+------------------------------+\n";
+    cout << "\t\t|Cap nhat nganh hoc thanh cong!\n";
+     gotoxy(47,29); cout <<"|\n";
+    gotoxy(0,30); cout << "\t\t+------------------------------+\n";
 }
 void DSSV::capNhatSvTheoDiem(Node *nodeFound)
 {
     float diemDSA, diemOOP, diemTRR;
     do
     {
-        cout << "\t(?) Nhap diem 3 mon (DSA + OOP + TRR): ";
+        cout << "\t\t(?) Nhap diem 3 mon (DSA + OOP + TRR): ";
         cin >> diemDSA >> diemOOP >> diemTRR;
     } while (!isMark(diemDSA, diemOOP, diemTRR));
     // Thuc hien cap nhat diem
@@ -335,27 +359,30 @@ void DSSV::capNhatSvTheoDiem(Node *nodeFound)
         }
         temp = temp->next;
     }
-    cout << "\tCap nhat diem thanh cong!\n";
+    cout << "\t\t+------------------------------+\n";
+    cout << "\t\t|Cap nhat diem thanh cong!\n";
+    gotoxy(47,29); cout <<"|\n";
+    gotoxy(0,30); cout << "\t\t+------------------------------+\n";
 }
 
 void DSSV::capNhatSVBangID()
 {
-    cout << "\t(?) Nhap ID: ";
+    cout << "\t\t(?) Nhap ID: ";
     int id;
     cin >> id;
     Node *temp = layNodeTheoId(this->dssv, id);
     if (temp == NULL)
-        cout << "\tKhong co ID can cap nhat!\n";
+        cout << "\t\t|Khong co ID can cap nhat!\n";
     else
     {
         int chon;
-        cout << "\n\t[1]. Cap nhat ten\n";
-        cout << "\t[2]. Cap nhat email\n";
-        cout << "\t[3]. Cap nhat ngay sinh\n";
-        cout << "\t[4]. Cap nhat gioi tinh\n";
-        cout << "\t[5]. Cap nhat nganh\n";
-        cout << "\t[6]. Cap nhat diem\n";
-        cout << "\t(?): ";
+        cout << "\n\t\t[1]. Cap nhat ten\n";
+        cout << "\t\t[2]. Cap nhat email\n";
+        cout << "\t\t[3]. Cap nhat ngay sinh\n";
+        cout << "\t\t[4]. Cap nhat gioi tinh\n";
+        cout << "\t\t[5]. Cap nhat nganh\n";
+        cout << "\t\t[6]. Cap nhat diem\n";
+        cout << "\t\t(?): ";
         cin >> chon;
         switch (chon)
         {
@@ -388,23 +415,24 @@ void DSSV::capNhatSVBangMSSV()
     string mssv;
     do
     {
-        cout << "\t(?) Nhap MSSV: ";
+        cout << "\t\t(?) Nhap MSSV: ";
         getline(cin, mssv);
     } while (!isMSSV(mssv));
     Node *temp = layNodeTheoMSSV(this->dssv, mssv);
     if (temp == NULL)
-        cout << "\tKhong co ID can cap nhat!\n";
+        cout << "\t\tKhong co ID can cap nhat!\n";
     else
     {
         int chon;
-        cout << "\n\t[1]. Cap nhat ten\n";
-        cout << "\t[2]. Cap nhat email\n";
-        cout << "\t[3]. Cap nhat ngay sinh\n";
-        cout << "\t[4]. Cap nhat gioi tinh\n";
-        cout << "\t[5]. Cap nhat nganh\n";
-        cout << "\t[6]. Cap nhat diem\n";
-        cout << "\t(?): ";
+        cout << "\t\t[1]. Cap nhat ten\n";
+        cout << "\t\t[2]. Cap nhat email\n";
+        cout << "\t\t[3]. Cap nhat ngay sinh\n";
+        cout << "\t\t[4]. Cap nhat gioi tinh\n";
+        cout << "\t\t[5]. Cap nhat nganh\n";
+        cout << "\t\t[6]. Cap nhat diem\n";
+        cout << "\t\t(?): ";
         cin >> chon;
+        cout << "\n";
         switch (chon)
         {
         case 1:
@@ -446,11 +474,11 @@ void DSSV::sxSVTangDanDTB()
 
 void DSSV::sxSVTangDan()
 {
-    cout << "\n\t[1]. Tang dan theo ID\n";
-    cout << "\t[2]. Tang dan theo Ten\n";
-    cout << "\t[3]. Tang dan theo DTB\n";
+    cout << "\n\t\t[1]. Tang dan theo ID\n";
+    cout << "\t\t[2]. Tang dan theo Ten\n";
+    cout << "\t\t[3]. Tang dan theo DTB\n";
     int chon;
-    cout << "\t(?): ";
+    cout << "\t\t(?): ";
     cin >> chon;
     switch (chon)
     {
@@ -481,11 +509,11 @@ void DSSV::sxSVGiamDanTen(){
 
 void DSSV::sxSVGiamDan()
 {
-    cout << "\n\t[1]. Giam dan theo ID\n";
-    cout << "\t[2]. Giam dan theo Ten\n";
-    cout << "\t[3]. Giam dan theo DTB\n";
+    cout << "\n\t\t[1]. Giam dan theo ID\n";
+    cout << "\t\t[2]. Giam dan theo Ten\n";
+    cout << "\t\t[3]. Giam dan theo DTB\n";
     int chon;
-    cout << "\t(?): ";
+    cout << "\t\t(?): ";
     cin >> chon;
     switch (chon)
     {
@@ -516,21 +544,21 @@ int DSSV::soLuong(){
 
 void DSSV::xoaNode(Node* sv){
     // Nếu tồn tại Node trước Node cần xóa
-        if (sv->prev) {  
-            sv->prev->next = sv->next;
-        } else {
-            dssv = sv->next;
-        }
+    if (sv->prev) {  
+        sv->prev->next = sv->next;
+    } else {
+        dssv = sv->next;
+    }
 
     // Nếu tồn tại Node sau Node cần xóa
-        if (sv->next) { 
-            sv->next->prev = sv->prev;
-        }
-		else {
-			sv->prev = tail;
-		}
+    if (sv->next) { 
+        sv->next->prev = sv->prev;
+    }
+    else {
+        sv->prev = tail;
+    }
 
-        delete sv;
+    delete sv;
 }
 void DSSV::xoaSV(int id[], int n){
     Node* current = dssv;
@@ -546,10 +574,17 @@ void DSSV::xoaSV(int id[], int n){
         }
         
     }
-    if (!current || n > soLuong() || !check) {
-        cout << "\tKhong tim thay sinh vien co ID phu hop!"<< endl;
-    }else
-        cout << "\tDa xoa thanh cong!"<< endl;
+    if (n > soLuong() || !check) {
+        cout << "\t\t+------------------------------------------+\n";
+        cout << "\t\t|Khong tim thay sinh vien co ID phu hop!\n";
+        gotoxy(59,21); cout <<"|\n";
+        gotoxy(0,22); cout << "\t\t+------------------------------------------+\n";
+    }else{
+        cout << "\t\t+----------------------+\n";
+        cout << "\t\t|Da xoa thanh cong!"<< endl;
+        gotoxy(39,21); cout <<"|\n";
+        gotoxy(0,22); cout << "\t\t+----------------------+\n";
+    }
 }
 
 void DSSV::xoaSV(string mssv){
@@ -566,10 +601,17 @@ void DSSV::xoaSV(string mssv){
     }
 
     if (!current || !check) {
-        cout << "\tKhong tim thay sinh vien co MSSV phu hop!"<< endl;
+        cout << "\t\t+------------------------------------------+\n";
+        cout << "\t\t|Khong tim thay sinh vien co MSSV phu hop!"<< endl;
+        gotoxy(59,20); cout <<"|\n";
+        gotoxy(0,21); cout << "\t\t+------------------------------------------+\n";
     }
-    else 
-        cout << "\tDa xoa thanh cong!"<< endl;
+    else{
+        cout << "\t\t+----------------------+\n";
+        cout << "\t\t|Da xoa thanh cong!"<< endl;
+        gotoxy(39,20); cout <<"|\n";
+        gotoxy(0,21); cout << "\t\t+----------------------+\n";
+    }
 }
 
 void DSSV::timKiemSV(int id){
@@ -583,40 +625,51 @@ void DSSV::timKiemSV(int id){
         else current = current->next;
     }
     if(!current || !check){
-        cout << "\tKhong tim thay sinh vien co ID: " << id << endl;
+        cout << "\t\t+------------------------------------------+\n";
+        cout << "\t\t|Khong tim thay sinh vien co ID: " << id << endl;
+        gotoxy(59,20); cout <<"|\n";
+        gotoxy(0,21); cout << "\t\t+------------------------------------------+\n";
         return;
     }
     else{
-        inThongTinSV(current->sv);
+        title();
+        List(current->sv, 1);
     }
 }
 
 void DSSV::timKiemSV(string ten){
     Node* current = dssv;
     bool check = false;
+    int dem = 0;
     while(current!=nullptr){
         if(tachChuoiInHoa(current->sv.hoVaTen) == tachChuoiInHoa(ten) || tachChuoiThuong(current->sv.hoVaTen) == tachChuoiThuong(ten)){
             check = true;
-            inThongTinSV(current->sv);
+            dem++;
+            if(dem) title();
+            // inThongTinSV(current->sv);
+            List(current->sv, dem);cout <<endl;
         }
         current = current->next;
     }
     if(!check){
-        cout << "\tKhong tim thay sinh vien co ten: " << ten << endl;
+        cout << "\t\t+------------------------------------------+\n";
+        cout << "\t\t|Khong tim thay sinh vien co ten: " << ten << endl;
+        gotoxy(59,20); cout <<"|\n";
+        gotoxy(0,21); cout << "\t\t+------------------------------------------+\n";
         return;
     }
 }
 
 void DSSV::thongKeDTB(){
-    cout << "\t[1]. Chinh xac muc diem\n";
-    cout << "\t[2]. Cao hon muc diem\n";
-    cout << "\t[3]. Thap hon muc diem\n";
-    cout << "\t(?): ";
+    cout << "\t\t[1]. Chinh xac muc diem\n";
+    cout << "\t\t[2]. Cao hon muc diem\n";
+    cout << "\t\t[3]. Thap hon muc diem\n";
+    cout << "\t\t(?): ";
     int n; cin>>n;
     float diem;
     do
     {
-        cout << "\t(?) Nhap DTB: ";
+        cout << "\t\t(?) Nhap DTB: ";
         cin >> diem;
     } while (!isMark(diem, 0, 0));
 
@@ -627,30 +680,50 @@ void DSSV::thongKeDTB(){
             if(current->sv.diem.DTB == diem) dem ++;
             current = current->next;
         }
-        cout << "\tSo sinh vien co DTB = " << diem << " la: " << dem << endl;
+        if(dem){
+        cout << "\t\t+--------------------------------------+\n";
+        cout << "\t\t|So luong sinh vien co DTB = " << diem << " : " << dem;
+        gotoxy(55,25); cout <<"|\n";
+        gotoxy(0,26); cout << "\t\t+--------------------------------------+\n";
+        }
     }
     else if(n==2){
         while(current!=nullptr){
             if(current->sv.diem.DTB >= diem) dem ++;
             current = current->next;
         }
-        cout << "\tSo sinh vien co DTB cao hon " << diem << " la: " << dem << endl;
+        if(dem){
+        cout << "\t\t+----------------------------------------+\n";
+        cout << "\t\t|So sinh vien co DTB cao hon " << diem << " la: " << dem << endl;
+        gotoxy(57,25); cout <<"|\n";
+        gotoxy(0,26); cout << "\t\t+----------------------------------------+\n";
+        }
     }
     else{
         while(current!=nullptr){
             if(current->sv.diem.DTB < diem) dem ++;
             current = current->next;
         } 
-        cout << "\tSo sinh vien co DTB thap hon " << diem << " la: " << dem << endl;
+        if(dem){
+        cout << "\t\t+----------------------------------------+\n";
+        cout << "\t\t|So sinh vien co DTB thap hon " << diem << " la: " << dem << endl;
+        gotoxy(57,25); cout <<"|\n";
+        gotoxy(0,26); cout << "\t\t+----------------------------------------+\n";
+        }
     }
-    
-    if(!dem) cout << "\tKhong tim thay sinh vien co DTB la: " << diem << endl;
+    if(!dem){
+        cout << "\t\t+----------------------------------------+\n";
+        cout << "\t\t|Khong tim thay sinh vien co DTB la: " << diem << endl;
+        gotoxy(57,25); cout <<"|\n";
+        gotoxy(0,26); cout << "\t\t+----------------------------------------+\n";
+    }
+
 }
 void DSSV::thongKeNganh(){
     string s;
     do
     {
-        cout << "\t(?) Nhap nganh hoc: ";
+        cout << "\t\t(?) Nhap nganh hoc: ";
         cin.ignore();
         getline(cin, s);
     } while (!isMajors(s));
@@ -661,11 +734,17 @@ void DSSV::thongKeNganh(){
         if(current->sv.nganhHoc == s) dem ++;
         current = current->next;
     }
-    if(!dem) cout << "\tKhong tim thay sinh vien nganh : " << s << endl;
+    if(!dem){
+        cout << "\t\t+----------------------------------------+\n";
+        cout << "\t\t|Khong tim thay sinh vien nganh : " << s << endl;
+        gotoxy(57,21); cout <<"|\n";
+        gotoxy(0,22); cout << "\t\t+----------------------------------------+\n";
+    }
         else {
-            cout << "\t+--------------------------------+\n";  
-            cout << "\t|So sinh vien hoc nganh " << s << " la: " << dem << "|\n";
-            cout << "\t+--------------------------------+\n";
+            cout << "\t\t+----------------------------------------+\n";
+            cout << "\t\t|So sinh vien hoc nganh " << s << " la: " << dem;
+            gotoxy(57,21); cout <<"|\n";
+            gotoxy(0,22); cout << "\t\t+----------------------------------------+\n";
         }
 }
 
@@ -673,7 +752,7 @@ void DSSV::thongKeGioiTinh(){
     string s;
     do
     {
-        cout << "\t(?) Nhap gioi tinh: ";
+        cout << "\t\t(?) Nhap gioi tinh: ";
         cin.ignore();
         getline(cin, s);
     } while (!isGender(s));
@@ -685,30 +764,22 @@ void DSSV::thongKeGioiTinh(){
         current = current->next;
     }
 
-    if(!dem) cout << "\tKhong tim thay sinh vien nganh : " << s << endl;
-        else {
-            if(s == "Nam"){
-                cout << "\t+--------------------+\n";
-                cout << "\t| Co " << dem << " " << s << "          |\n" ;
-                cout << "\t+--------------------+\n";
-            }
-            else {
-                cout << "\t+--------------------+\n";
-                cout << "\t| Co " << dem << " " << s << "           |\n" ;
-                cout << "\t+--------------------+\n";
-            }
+    cout << "\t\t+-------------+\n";
+    cout << "\t\t| Co " << dem << " " << s;
+    gotoxy(30,21); cout <<"|\n";
+    gotoxy(0,22); cout << "\t\t+-------------+\n";
+            
 
-        }
 }
 
 void DSSV::thongKe() {
-    cout << "\n\t[1]. Thong ke DTB\n";
-    cout << "\t[2]. Thong ke Nganh\n";
-    cout << "\t[3]. Thong ke Gioi Tinh\n";
-    cout << "\t[4]. Thong ke so luong SV\n";
+    cout << "\n\t\t[1]. Thong ke DTB\n";
+    cout << "\t\t[2]. Thong ke Nganh\n";
+    cout << "\t\t[3]. Thong ke Gioi Tinh\n";
+    cout << "\t\t[4]. Thong ke so luong SV\n";
 
     int chon;
-    cout << "\t(?): ";
+    cout << "\t\t(?): ";
     cin >> chon;
 
     switch (chon)
@@ -723,7 +794,10 @@ void DSSV::thongKe() {
             this->thongKeGioiTinh();
             break;
         case 4:
-            cout << this->soLuong();
+            cout << "\t\t+------------------------+\n";
+            cout << "\t\t|So luong sinh vien : " << this->soLuong();
+            gotoxy(41,20); cout <<"|\n";
+            gotoxy(0,21); cout << "\t\t+------------------------+\n";
             break;
         default:
             break;
