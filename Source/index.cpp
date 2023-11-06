@@ -29,8 +29,8 @@ void Menu(DSSV dssv) {
     while(true) {
         int tem;
         system("cls");
-        backGround();
-        gotoxy(10,2);
+        // backGround();
+        // gotoxy(10,2);
         cout << "\n	        \tCHUONG TRINH QUAN LI SINH VIEN - UTC2 - IT K63           ";
         cout << "\n\t	+----------------------------------------------------------------+";
         cout << "\n\t	| [1]. Them moi sinh vien           | [6]. Xoa sinh vien         |";

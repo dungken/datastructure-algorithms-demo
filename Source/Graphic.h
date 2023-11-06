@@ -12,22 +12,20 @@ void gotoxy(int x, int y) {
 }
 
 void backGround(){
-    gotoxy(0, 2);
+    gotoxy(0, 13);
     cout << "+";
-    for (int i = 1; i < 142; i++) cout << "-";
+    for (int i = 1; i < 133; i++) cout << "-";
     cout << "+";
 
-    for (int i = 3; i < 33; i++) {
-        gotoxy(0, i);
+    for (int i = 1; i < 50; i++) {
+        gotoxy(0, 13+i);
         cout << "|";
-        gotoxy(142, i);
+        gotoxy(133, 13+i);
         cout << "|";
     }
 
-    gotoxy(0, 33);
-    cout << "+";
-    for (int i = 1; i < 142; i++) cout << "-";
-    cout << "+";
+    gotoxy(1, 15);
+    for (int i = 1; i < 133; i++) cout << "-";
 }
 
 void title(){
@@ -45,17 +43,20 @@ void title(){
 }
 
 void List(SV s, int i){
-    gotoxy(1,19+i); cout << s.id;
-    gotoxy(6,19+i); cout << s.MSSV;
-    gotoxy(18,19+i); cout << s.hoVaTen;
-    gotoxy(37,19+i); cout << s.email ;
-    gotoxy(63,19+i); cout << s.ngaySinh.ngay << "/" << s.ngaySinh.thang << "/" << s.ngaySinh.nam;
-    gotoxy(80,19+i); cout << s.gioiTinh;
-    gotoxy(91,19+i); cout << s.nganhHoc;
-    gotoxy(107,19+i); cout << s.diem.diemOOP;
-    gotoxy(114,19+i); cout << s.diem.diemDSA;
-    gotoxy(121, 19+i); cout  << s.diem.diemTRR;
-    gotoxy(128, 19+i); cout << s.diem.DTB << endl; 
+    gotoxy(1,19+i); cout << s.id; gotoxy(4,19+i); cout << "|";
+    gotoxy(6,19+i); cout << s.MSSV; gotoxy(17, 19+i); cout << "|";
+    gotoxy(18,19+i); cout << s.hoVaTen; gotoxy(35, 19+i); cout << "|";
+    gotoxy(37,19+i); cout << s.email ; gotoxy(59, 19+i); cout << "|";
+    gotoxy(63,19+i); cout << s.ngaySinh.ngay << "/" << s.ngaySinh.thang << "/" << s.ngaySinh.nam; gotoxy(75, 19+i); cout << "|";
+    gotoxy(80,19+i); cout << s.gioiTinh; gotoxy(88, 19+i); cout << "|";
+    gotoxy(91,19+i); cout << s.nganhHoc; gotoxy(104, 19+i); cout << "|";
+    gotoxy(107,19+i); cout << s.diem.diemOOP;gotoxy(112, 19+i); cout << "|";
+    gotoxy(114,19+i); cout << s.diem.diemDSA;gotoxy(119, 19+i); cout << "|";
+    gotoxy(121, 19+i); cout  << s.diem.diemTRR;gotoxy(126, 19+i); cout << "|";
+    gotoxy(128, 19+i); cout << s.diem.DTB << endl;
+    int temp = 19+i;
+    gotoxy(1, ++temp);
+    for (int i = 1; i < 133; i++) cout << "-";
 }
 
 // void in(){

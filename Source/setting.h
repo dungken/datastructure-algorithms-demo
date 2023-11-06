@@ -120,21 +120,23 @@ void DSSV::themDanhSachSV(int n)
 
 void DSSV::inDanhSachSV()
 {
-    gotoxy(1,14); cout << "ID";
-    gotoxy(8,14); cout << "MSSV";
-    gotoxy(20,14); cout << "Ho va ten";
-    gotoxy(40,14); cout << "Gmail";
-    gotoxy(60,14); cout << "Ngay/Thang/Nam";
-    gotoxy(77,14); cout << "Gioi tinh";
-    gotoxy(91,14); cout << "Nganh hoc";
-    gotoxy(107,14); cout << "OOP";
-    gotoxy(114,14); cout << "DSA";
-    gotoxy(121, 14); cout <<  "TRR";
-    gotoxy(128, 14); cout << "DTB\n"; 
-    int dem = -4; 
+    backGround();
+    gotoxy(1,14); cout << "ID |";
+    gotoxy(8,14); cout << "MSSV     |";
+    gotoxy(20,14); cout << "Ho va ten      |";
+    gotoxy(40,14); cout << "Gmail              |";
+    gotoxy(60,14); cout << "Ngay/Thang/Nam |";
+    gotoxy(77,14); cout << "Gioi tinh  |";
+    gotoxy(91,14); cout << "Nganh hoc    |";
+    gotoxy(107,14); cout << "OOP  |";
+    gotoxy(114,14); cout << "DSA  |";
+    gotoxy(121, 14); cout <<  "TRR  |";
+    gotoxy(128, 14); cout << "DTB  \n"; 
+    int dem = -3; 
     Node* current = dssv;
     while(current!=nullptr){
-        List(current->sv, dem++);
+        List(current->sv, dem);
+        dem = dem+2;
         current = current->next;
     }
 }
