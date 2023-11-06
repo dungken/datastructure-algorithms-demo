@@ -215,15 +215,12 @@ Node *layNodeTheoMSSV(Node *dssv, string mssv)
 }
 
 string tachChuoiInHoa(const string& text){
-    // TÃ¬m vá» trÃ­ cá»§a dáº¥u cÃ¡ch cuá»i cÃ¹ng trong chuá»i
     size_t lastSpacePos = text.find_last_of(' ');
 
-    // Náº¿u khÃ´ng tÃ¬m tháº¥y dáº¥u cÃ¡ch, tráº£ vá» toÃ n bá» chuá»i
     if (lastSpacePos == string::npos) {
         return text;
     }
 
-    // TrÃ­ch xuáº¥t tá»« cuá»i cÃ¹ng báº±ng cÃ¡ch sá»­ dá»¥ng substr
     return text.substr(lastSpacePos + 1);
 }
 
