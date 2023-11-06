@@ -206,7 +206,7 @@ void Menu(DSSV dssv) {
                     cout << "\n\t\t[3]. Linear Search & Binary Search\n";
                     cout << "\t\t(?): ";
                     cin >> tem;
-                }while(tem != 1 && tem != 2 && tem != 3 && tem != 4  && tem != 0);
+                }while(tem != 1 && tem != 2 && tem != 3 && tem != 0);
                 if(tem == 0) {
                     Menu(dssv);
                 } else if(tem == 1) {
