@@ -18,11 +18,10 @@
             - Heap sort
 
 ## CÁC CHỨC NĂNG CHÍNH CHƯƠNG TRÌNH
-    ![main](Source/images/main.png)
+![main](./Source/images/main.png)
     1. Thêm sinh viên 
         - Thêm 1 sinh viên
         - Thêm nhiều sinh viên
-        ![alt](http://~)
 
     2. Hiển thị sinh viên
         - Hiển thị thông tin sinh viên
