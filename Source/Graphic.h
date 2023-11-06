@@ -29,17 +29,31 @@ void backGround(){
 }
 
 void title(){
-    gotoxy(1,19); cout << "ID";
-    gotoxy(8,19); cout << "MSSV";
-    gotoxy(20,19); cout << "Ho va ten";
-    gotoxy(40,19); cout << "Gmail";
-    gotoxy(60,19); cout << "Ngay/Thang/Nam";
-    gotoxy(77,19); cout << "Gioi tinh";
-    gotoxy(91,19); cout << "Nganh hoc";
-    gotoxy(107,19); cout << "OOP";
-    gotoxy(114,19); cout << "DSA";
-    gotoxy(121, 19); cout <<  "TRR";
-    gotoxy(128, 19); cout << "DTB\n"; 
+    gotoxy(0, 18);
+    cout << "+";
+    for (int i = 1; i < 133; i++) cout << "-";
+    cout << "+";
+    for (int i = 1; i < 4; i++) {
+        gotoxy(0, 18+i);
+        cout << "|";
+        gotoxy(133, 18+i);
+        cout << "|";
+    }
+    gotoxy(1,19); cout << "ID |";
+    gotoxy(8,19); cout << "MSSV     |";
+    gotoxy(20,19); cout << "Ho va ten      |";
+    gotoxy(40,19); cout << "Gmail              |";
+    gotoxy(60,19); cout << "Ngay/Thang/Nam |";
+    gotoxy(77,19); cout << "Gioi tinh  |";
+    gotoxy(91,19); cout << "Nganh hoc    |";
+    gotoxy(107,19); cout << "OOP  |";
+    gotoxy(114,19); cout << "DSA  |";
+    gotoxy(121, 19); cout <<  "TRR  |";
+    gotoxy(128, 19); cout << "DTB  \n"; 
+    gotoxy(0, 20);
+    cout << "+";
+    for (int i = 1; i < 133; i++) cout << "-";
+    cout << "+";
 }
 
 void List(SV s, int i){
