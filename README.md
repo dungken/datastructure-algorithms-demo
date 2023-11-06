@@ -1,19 +1,28 @@
-## CHƯƠNG TRÌNH QUẢN LÝ SINH VIÊN (ÁP DỤNG CẤU TRÚC DỮ LIỆU VÀ GIẢI THUẬT)
+## CHƯƠNG TRÌNH QUẢN LÝ SINH VIÊN (ÁP DỤNG CTDL & GT)
     1. Kiến thức cấu trúc dữ liệu
-        - Vector
-        - Linked List (Doubly linked list)
-        
+        - Vector/Set/Map,..
+        - Linked List (Doubly/Single linked list)
+        - Stack/Queue/Heap/Tree/HashTable,...
+
     2. Kiến thức thuật toán
-        - Tìm kiếm tuyến tính (Linear Search)
-        - Tìm kiếm nhị phân (Binary Search)
-        - Sắp xếp chọn (Selection Sort)
-        - Sắp xếp nhanh (Quick Sort)
-        - Sắp xếp trộn (Merge Sort)
+        - Tìm kiếm
+            - Tuyến tính (Linear Search)
+            - Nhị phân (Binary Search)
+
+        - Sắp xếp
+            - Sắp xếp chọn (Selection Sort)
+            - Sắp xếp nổi bọt (Bubble Sort)
+            - Sắp xếp chèn (Insertion sort)
+            - Sắp xếp nhanh (Quick Sort)
+            - Sắp xếp trộn (Merge Sort)
+            - Heap sort
 
 ## CÁC CHỨC NĂNG CHÍNH CHƯƠNG TRÌNH
+    ![main](Source/images/main.png)
     1. Thêm sinh viên 
         - Thêm 1 sinh viên
         - Thêm nhiều sinh viên
+        ![alt](http://~)
 
     2. Hiển thị sinh viên
         - Hiển thị thông tin sinh viên
@@ -45,6 +54,13 @@
         - Ghi file
 
     9. So sánh thời gian chạy của các thuật toán áp dụng trong bài tập
-        - SelectionSort - O(n^2) & QuickSort - O(n*log(n)) cho trường hợp trung bình.
-        - MergeSort - O(n*log(n)) cho trường hợp trung bình &  QuickSort - O(n*log(n)) cho trường hợp trung bình.
-        - Linear Search - O(n) cho trường hợp trung bình & Binary Search - O(log(n)) cho trường hợp trung bình, nhưng yêu cầu dữ liệu đã được sắp xếp.
+        - SelectionSort - O(n^2)
+          QuickSort - O(n*log(n)) cho trường hợp trung bình.
+        - MergeSort - O(n*log(n)) cho trường hợp trung bình
+          QuickSort - O(n*log(n)) cho trường hợp trung bình.
+        - Linear Search - O(n) cho trường hợp trung bình
+          Binary Search - O(log(n)) cho trường hợp trung bình, yêu cầu DL được sắp xếp.
+
+## TÁC GIẢ
+    1. Hà Văn Dũng
+    2. Nguyễn Nguyên Huy
