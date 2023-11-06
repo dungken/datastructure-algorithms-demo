@@ -7,9 +7,6 @@ THƯ VIỆN CÀI ĐẶT CÁC HÀN TRONG ortherFuntions.h
 #include <bits/stdc++.h>
 #include "ortherFunctions.h"
 
-bool kiemTraTonTai(string mssv)
-{
-}
 
 void swapNodes(Node *node1, Node *node2)
 {
@@ -31,10 +28,8 @@ Node *phanHoach(Node *l, Node *h, string tieuChi)
     {
         int pivot = h->sv.id;
         Node *i = l->prev;
-        for (Node *j = l; j != h; j = j->next)
-        {
-            if (j->sv.id <= pivot)
-            {
+        for (Node *j = l; j != h; j = j->next) {
+            if (j->sv.id <= pivot) {
                 i = (i == NULL) ? l : i->next;
                 swapNodes(i, j);
             }

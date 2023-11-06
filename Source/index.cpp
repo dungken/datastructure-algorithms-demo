@@ -29,15 +29,15 @@ void Menu(DSSV dssv) {
     while(true) {
         int tem;
         system("cls");
-        backGround();
-        gotoxy(10,2);
+        // backGround();
+        // gotoxy(10,2);
         cout << "\n	        \tCHUONG TRINH QUAN LI SINH VIEN - UTC2 - IT K63           ";
         cout << "\n\t	+----------------------------------------------------------------+";
         cout << "\n\t	| [1]. Them moi sinh vien           | [6]. Xoa sinh vien         |";
         cout << "\n\t	| [2]. Hien thi sinh vien hien co   | [7]. Thong ke sinh vien    |";
         cout << "\n\t	| [3]. Cap nhat thong tin sinh vien | [8]. Doc & Ghi file        |";
-        cout << "\n\t	| [4]. Tim kiem sinh vien           | [0]. Thoat chuong trinh    |";
-        cout << "\n\t	| [5]. Sap xep sinh vien            |                            |";
+        cout << "\n\t	| [4]. Tim kiem sinh vien           | [9]. So sanh thoi gian     |";
+        cout << "\n\t	| [5]. Sap xep sinh vien            | [0]. Thoat chuong trinh    |";
         cout << "\n\t	+----------------------------------------------------------------+";
         int chon;
         cout << "\n\n\t\tNhap lua chon: ";
@@ -112,14 +112,14 @@ void Menu(DSSV dssv) {
                     cout << "\t\t(?) Nhap ID: ";
                     int id;
                     cin >> id;
-                    dssv.timKiemSV(id);
-                }else {
+                    dssv.timKiemSvTuyenTinh(id);
+                } else {
                     string hoVaTen;
                     cout << "\t\t(?) Nhap Ten: ";
                     cin.ignore();
                     getline(cin, hoVaTen);
-                    dssv.timKiemSV(hoVaTen);
-                }
+                    dssv.timKiemSvTuyenTinh(hoVaTen);
+                } 
                 cout << "\t\t";
                 system("pause");
                 break;
@@ -194,6 +194,27 @@ void Menu(DSSV dssv) {
                     dssv.ghiFile();
                 }else {
                     dssv.docFile();
+                }
+                cout << "\t\t";
+                system("pause");
+                break;
+            case 9:
+                do {
+                    cout << "\t\t[0]. Quay lai";
+                    cout << "\n\t\t[1]. SelectionSort & QuickSort";
+                    cout << "\n\t\t[2]. MergeSort & QuickSort";
+                    cout << "\n\t\t[3]. Linear Search & Binary Search\n";
+                    cout << "\t\t(?): ";
+                    cin >> tem;
+                }while(tem != 1 && tem != 2 && tem != 3 && tem != 4  && tem != 0);
+                if(tem == 0) {
+                    Menu(dssv);
+                } else if(tem == 1) {
+                    dssv.soSanhThoiGianSapXep1();
+                }else if (tem == 2){
+                    dssv.soSanhThoiGianSapXep2();
+                }else {
+                    dssv.soSanhThoiGianTimKiem();
                 }
                 cout << "\t\t";
                 system("pause");
