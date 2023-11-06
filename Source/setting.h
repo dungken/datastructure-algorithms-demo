@@ -727,7 +727,7 @@ void DSSV::timKiemSvTuyenTinh(int id) {
     }
     else {
         title();
-        List(current->sv, 1);
+        List(current->sv, 2);
     }
 }
 
@@ -745,14 +745,15 @@ void DSSV::timKiemSvTuyenTinh1(int id) {
 void DSSV::timKiemSvTuyenTinh(string ten) {
     Node* current = dssv;
     bool check = false;
-    int dem = 0;
+    int dem = 2, so = 0;
     while(current!=nullptr) {
         if(tachChuoiInHoa(current->sv.hoVaTen) == tachChuoiInHoa(ten) || tachChuoiThuong(current->sv.hoVaTen) == tachChuoiThuong(ten)){
             check = true;
-            dem++;
             if(dem) title();
+            so++;
             // inThongTinSV(current->sv);
             List(current->sv, dem);cout <<endl;
+            dem = dem+2;
         }
         current = current->next;
     }
@@ -764,6 +765,14 @@ void DSSV::timKiemSvTuyenTinh(string ten) {
         gotoxy(0,21); cout << "\t\t+------------------------------------------+\n";
         return;
     }
+    for (int i = 1; i < so+5; i++) {
+        gotoxy(0, 18+i);
+        cout << "|";
+        gotoxy(133, 18+i);
+        cout << "|";
+    }
+    cout << endl;
+
 }
 
 Node* DSSV::timNodeGiua() {
